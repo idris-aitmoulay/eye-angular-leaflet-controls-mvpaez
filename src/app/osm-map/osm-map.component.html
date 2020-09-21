@@ -1,0 +1,9 @@
+<div class="map-container" leaflet
+     [leafletOptions]="options"
+     (leafletMapReady)="onMapReady($event)"
+     (leafletMapZoomEnd)="onMapZoomEnd($event)"
+     ></div>
+<leaflet-loading-control 
+    [options]="loadingOptions"
+    [map]='map'
+    ></leaflet-loading-control>

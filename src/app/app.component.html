@@ -1,0 +1,28 @@
+
+<div class="container">
+  <app-osm-map 
+  [options]="map1Options"
+  (map$)="receiveMap($event, '1')"
+  (zoom$)="receiveZoom($event, '1')"
+  id='map-1'
+  ></app-osm-map></div>
+  <p>Map 1 : Zoom level = {{zoom[1]}}, Location is : {{location}}</p>
+<div class="container">
+  <app-osm-map 
+  [options]="map2Options"
+  (map$)="receiveMap($event, '2')"
+  (zoom$)="receiveZoom($event, '2')"
+  id='map-2'
+  ></app-osm-map></div>
+  <p>Map 2 : Zoom level = {{zoom[2]}}</p>
+<leaflet-fullscreen-control
+  [options]="fullscreenOptions"
+  [map]="map[2]"
+  ></leaflet-fullscreen-control>
+<leaflet-locate-control 
+  [options]="locateOptions"
+  [map]="map[1]"
+  (location$)="onNewLocation($event)"
+  ></leaflet-locate-control>
+
+
