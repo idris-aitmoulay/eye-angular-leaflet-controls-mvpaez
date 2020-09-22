@@ -28,7 +28,7 @@ export class OsmMapComponent implements OnInit, OnDestroy {
   };
 
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit() {
@@ -40,6 +40,7 @@ export class OsmMapComponent implements OnInit, OnDestroy {
       Control.Attribution.prototype._addTo.call(this, map);
 
       // use the css checkbox hack to toggle the attribution
+      // @ts-ignore
       const parent     = this._container.parentNode;
       const checkbox   = document.createElement('input');
       const label      = document.createElement('label');
@@ -57,14 +58,17 @@ export class OsmMapComponent implements OnInit, OnDestroy {
 
       // initial setup for map load
       if (map._container.offsetWidth <= 600) {
+        // @ts-ignore
         DomUtil.addClass(this._container, 'leaflet-compact-attribution');
       }
 
       // update on map resize
       map.on('resize', function() {
         if (map._container.offsetWidth > 600) {
+          // @ts-ignore
           DomUtil.removeClass(this._container, 'leaflet-compact-attribution');
         } else {
+          // @ts-ignore
           DomUtil.addClass(this._container, 'leaflet-compact-attribution');
         }
       }, this);
